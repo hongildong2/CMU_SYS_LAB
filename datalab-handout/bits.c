@@ -143,7 +143,13 @@ NOTES:
  *   Rating: 1
  */
 int bitXor(int x, int y) {
-  return 2;
+	int u = x & y; // extract only 1 from x using y
+	int q = ~u; // get difference portion not considering 0
+	int v = ~x & ~y; // extract only 0 from x using y
+	int w = ~v; // get difference portion not considering 1
+
+	int ans = q & w; //
+	return ans;
 }
 /* 
  * tmin - return minimum two's complement integer 

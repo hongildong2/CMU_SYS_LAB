@@ -4,7 +4,6 @@
 #include <math.h>
 #include <assert.h>
 
-
 /* Routines used by floation point test code */
 
 /* Convert from bit level representation to floating point number */
