@@ -158,8 +158,8 @@ int bitXor(int x, int y) {
  *   Rating: 1
  */
 int tmin(void) {
-
-  return 2;
+  int base = 1;
+  return base << 31;
 
 }
 //2
@@ -171,7 +171,22 @@ int tmin(void) {
  *   Rating: 1
  */
 int isTmax(int x) {
-  return 2;
+	// edge case :: x when -1, if a == negX
+	int a = x + 1; // if x is max, a is min, otherwise x + 1;
+	int negX = ~x; // if x is -1 this is 0, x is max this is nonzero
+
+	int zeroFilter = !negX; // x is -1 this is 1, else 0;
+
+
+	int b = a + x + 1; // if x is max or -1, this is 0; otherwise non-zero
+
+
+	int c = !b; // if b was 0, this is 1 else 0;
+
+	int d = zeroFilter ^ c; // c is 1 : x is max or -1, else : no need to worry
+	// zerofilter is 1 and c is 1, then d is 0 -> x = -1 filtered ::  zerofilter is 0 and c is 1, d is 1, x = max alive
+
+	return d;
 }
 /* 
  * allOddBits - return 1 if all odd-numbered bits in word set to 1
